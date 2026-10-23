@@ -1,0 +1,145 @@
+/* ===== Reset dan Box Model ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===== Gaya dasar (mobile-first) ===== */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+    background-color: #f1f8e9;
+    color: #222;
+}
+
+header, footer {
+    padding: 16px;
+    text-align: center;
+    background-color: #1b5e20;
+    color: #fff;
+}
+
+/* ===== Navigasi (Flexbox) ===== */
+nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    list-style: none;
+    padding: 12px;
+    background-color: #2e7d32;
+}
+
+nav a {
+    display: block;
+    padding: 8px 12px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+nav a:hover {
+    background-color: #1b5e20;
+}
+
+/* ===== Tata letak utama (Grid) ===== */
+main {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 16px;
+}
+
+section {
+    min-width: 0;
+    padding: 16px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+section h2 {
+    margin-bottom: 12px;
+}
+
+/* ===== Tabel ===== */
+.tabel-wrap {
+    overflow-x: auto;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 500px;
+}
+
+th, td {
+    padding: 10px 14px;
+    border: 1px solid #bbb;
+    text-align: left;
+}
+
+th {
+    background-color: #c8e6c9;
+}
+
+/* ===== Formulir (Grid) ===== */
+form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+}
+
+form div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+input, select {
+    padding: 8px;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+}
+
+button {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #1b5e20;
+    color: #fff;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #2e7d32;
+}
+
+/* ===== Tablet: 600px - 1024px ===== */
+@media (min-width: 600px) {
+    nav ul {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    form {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    form button {
+        grid-column: 1 / -1;
+    }
+}
+
+/* ===== Desktop: di atas 1024px ===== */
+@media (min-width: 1025px) {
+    main {
+        grid-template-columns: 2fr 1fr;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    form {
+        grid-template-columns: 1fr;
+    }
+}
