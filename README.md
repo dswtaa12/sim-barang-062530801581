@@ -9,7 +9,7 @@ Sistem Pengelolaan Inventaris Barang Jurusan.
 - Matkul : Pemrograman Web
 - Dosen  : Agus Setiawan, M.Kom.
 
-## Gabaran Proyek
+## Gambaran Proyek
 SIM-Barang adalah Sistem Pengelolaan Inventaris Barang Jurusan, yaitu aplikasi web untuk mencatat, mengelola, dan memantau barang atau aset laboratorium dan jurusan. Lewat aplikasi ini, data barang seperti kode, nama, kategori, jumlah, dan kondisi bisa tersimpan rapi dan mudah dicari. Proyek ini dikembangkan bertahap selama pertemuan 1 sampai ke pertemuan 7, mulai dari setup lingkungan kerja, HTML, CSS, JavaScript, PHP, sampai database MySQL.
 
 ## Konsep HTTP Request dan Response
