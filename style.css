@@ -143,3 +143,35 @@ button:hover {
         grid-template-columns: 1fr;
     }
 }
+
+/* ===== Validasi, pencarian, toast (Pertemuan 4) ===== */
+.error {
+    color: #c62828;
+    font-size: 0.85rem;
+    min-height: 1.2em;
+}
+
+#cari {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 12px;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+}
+
+#toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 12px 20px;
+    background-color: #2e7d32;
+    color: #fff;
+    border-radius: 6px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+#toast.show {
+    opacity: 1;
+}

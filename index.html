@@ -25,6 +25,7 @@
     <main>
         <section id="inventaris">
             <h2>Inventaris Barang</h2>
+            <input type="text" id="cari" placeholder="Cari barang...">
             <div class="tabel-wrap">
                 <table>
                     <thead>
@@ -36,7 +37,7 @@
                             <th>Kondisi</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="isi-tabel">
                         <tr>
                             <td>BRG-001</td>
                             <td>Proyektor</td>
@@ -79,10 +80,11 @@
 
         <section id="form-barang">
             <h2>Tambah Barang</h2>
-            <form action="#" method="post">
+            <form id="form-barang-input" action="#" method="post">
                 <div>
                     <label for="kode">Kode Barang</label>
                     <input type="text" id="kode" name="kode" placeholder="Contoh: BRG-006" required>
+                    <small class="error" id="error-kode"></small>
                 </div>
                 <div>
                     <label for="nama">Nama Barang</label>
@@ -100,6 +102,7 @@
                 <div>
                     <label for="jumlah">Jumlah</label>
                     <input type="number" id="jumlah" name="jumlah" placeholder="Contoh: 10" required>
+                    <small class="error" id="error-jumlah"></small>
                 </div>
                 <div>
                     <label for="kondisi">Kondisi</label>
@@ -119,6 +122,8 @@
         <p>&copy; 2026 SIM-Barang</p>
         <p>Deswita Tri Melita - 062530801581 - 3IB</p>
     </footer>
+    <div id="toast"></div>
+    <script src="main.js"></script>
 </body>
 
 </html>
