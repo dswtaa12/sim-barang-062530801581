@@ -1,11 +1,11 @@
-/* ===== Reset dan Box Model ===== */
+/* ===== reset dan box model ===== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* ===== Gaya dasar (mobile-first) ===== */
+/* ===== gaya dasar (mobile-first) ===== */
 body {
     font-family: Arial, sans-serif;
     line-height: 1.5;
@@ -20,7 +20,7 @@ header, footer {
     color: #fff;
 }
 
-/* ===== Navigasi (Flexbox) ===== */
+/* ===== navigasi (Flexbox) ===== */
 nav ul {
     display: flex;
     flex-direction: column;
@@ -42,7 +42,7 @@ nav a:hover {
     background-color: #1b5e20;
 }
 
-/* ===== Tata letak utama (Grid) ===== */
+/* ===== tata letak utama (Grid) ===== */
 main {
     display: grid;
     grid-template-columns: 1fr;
@@ -62,7 +62,7 @@ section h2 {
     margin-bottom: 12px;
 }
 
-/* ===== Tabel ===== */
+/* ===== tabel nya ===== */
 .tabel-wrap {
     overflow-x: auto;
 }
@@ -83,7 +83,7 @@ th {
     background-color: #c8e6c9;
 }
 
-/* ===== Formulir (Grid) ===== */
+/* ===== formulir (Grid) ===== */
 form {
     display: grid;
     grid-template-columns: 1fr;
@@ -115,7 +115,7 @@ button:hover {
     background-color: #2e7d32;
 }
 
-/* ===== Tablet: 600px - 1024px ===== */
+/* ===== tablet: 600px - 1024px ===== */
 @media (min-width: 600px) {
     nav ul {
         flex-direction: row;
@@ -131,7 +131,7 @@ button:hover {
     }
 }
 
-/* ===== Desktop: di atas 1024px ===== */
+/* ===== desktop: di atas 1024px ===== */
 @media (min-width: 1025px) {
     main {
         grid-template-columns: 2fr 1fr;
@@ -144,7 +144,7 @@ button:hover {
     }
 }
 
-/* ===== Validasi, pencarian, toast (Pertemuan 4) ===== */
+/* ===== validasi, pencarian, toast (pertemuan 4) ===== */
 .error {
     color: #c62828;
     font-size: 0.85rem;
@@ -182,4 +182,10 @@ main.satu-kolom {
 
 section p {
     margin-top: 16px;
+}
+
+.login-box {
+    max-width: 400px;
+    margin: 0 auto;
+    width: 100%;
 }

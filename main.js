@@ -1,4 +1,4 @@
-// ===== Ambil Element =====
+// ===== mengambil element =====
 const form = document.getElementById('form-barang-input');
 const inputKode = document.getElementById('kode');
 const inputNama = document.getElementById('nama');
@@ -11,7 +11,7 @@ const inputCari = document.getElementById('cari');
 const isiTabel = document.getElementById('isi-tabel');
 const toast = document.getElementById('toast');
 
-// ===== Fitur 2: toast pemberitahuan =====
+// ===== toast pemberitahuan =====
 function tampilkanToast(pesan) {
     toast.textContent = pesan;
     toast.classList.add('show');
@@ -21,7 +21,7 @@ function tampilkanToast(pesan) {
     }, 3000);
 }
 
-// ===== Opsional: tambah baris baru ke tabel =====
+// ===== untuk tambah baris baru ke tabel =====
 function tambahBaris(kode, nama, kategori, jumlah, kondisi) {
     const tr = document.createElement('tr');
     const data = [kode, nama, kategori, jumlah, kondisi];
@@ -35,11 +35,11 @@ function tambahBaris(kode, nama, kategori, jumlah, kondisi) {
     isiTabel.appendChild(tr);
 }
 
-// ===== Validasi formulir saat submit =====
+// ===== memvalidasi formulir saat submit =====
 form.addEventListener('submit', function (e) {
     let valid = true;
 
-    // 1. Validasi kode: harus "BRG-" diikuti angka
+    // 1. validasi kode: harus "BRG-" diikuti angka
     const kode = inputKode.value.trim();
     if (!/^BRG-\d+$/.test(kode)) {
         errorKode.textContent = 'Kode harus diawali "BRG-" diikuti angka, contoh: BRG-001';
@@ -48,7 +48,7 @@ form.addEventListener('submit', function (e) {
         errorKode.textContent = '';
     }
 
-    // 2. Validasi jumlah: angka dan lebih dari 0
+    // 2. validasi jumlah: angka dan lebih dari 0
     const jumlah = Number(inputJumlah.value);
     if (inputJumlah.value === '' || isNaN(jumlah) || jumlah <= 0) {
         errorJumlah.textContent = 'Jumlah harus berupa angka lebih dari 0';
@@ -57,13 +57,13 @@ form.addEventListener('submit', function (e) {
         errorJumlah.textContent = '';
     }
 
-    // 3. Kalau semua benar
+    // 3. kalau semua nya berisi benar
     if (!valid) {
         e.preventDefault();
     }
 });
 
-// ===== Fitur 1: pencarian real-time =====
+// ===== pencarian real-time =====
 inputCari.addEventListener('input', function () {
     const kataKunci = inputCari.value.toLowerCase();
     const baris = isiTabel.getElementsByTagName('tr');

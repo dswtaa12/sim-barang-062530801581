@@ -1,16 +1,24 @@
 <?php
-// ===== Fungsi perhitungan =====
+session_start();
+
+if (!isset($_SESSION['login'])) {
+    header ('Location: login.php');
+    exit;
+}
+?>
+<?php
+// ===== fungsi perhitungan =====
 function hitungTotal($jumlah, $harga) {
     return $jumlah * $harga;
 }
 
-// ===== Cegah akses langsung lewat URL =====
+// ===== untuk cegah akses langsung lewat URL =====
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('Location: index.php');
     exit;
 }
 
-// ===== Tangkap data dari form =====
+// ===== data dari form =====
 $kode     = trim($_POST['kode'] ?? '');
 $nama     = trim($_POST['nama'] ?? '');
 $kategori = $_POST['kategori'] ?? '';
@@ -18,14 +26,17 @@ $kondisi  = $_POST['kondisi'] ?? '';
 $jumlah   = (int) ($_POST['jumlah'] ?? 0);
 $harga    = (int) ($_POST['harga'] ?? 0);
 
-// ===== Validasi sederhana di sisi server =====
+// ===== validasi sederhana =====
 $dataValid = ($kode !== '' && $nama !== '' && $jumlah > 0 && $harga > 0);
 
-// ===== Hitung total estimasi nilai aset =====
+// ===== hitung total =====
 $total = 0;
 if ($dataValid) {
     $total = hitungTotal($jumlah, $harga);
 }
+
+require_once 'classes/barang.php';
+$barang = new Barang($kode, $nama, $jumlah);
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -82,7 +93,7 @@ if ($dataValid) {
                 <p>Pastikan kode, nama, jumlah, dan harga satuan sudah diisi dengan benar.</p>
 
             <?php endif; ?>
-
+            <p><?php echo htmlspecialchars($barang->tampilanInfo()); ?></p>
             <p><a href="index.php">Kembali ke Form</a></p>
         </section>
 

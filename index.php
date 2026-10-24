@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['login'])) {
+    header ('Location: login.php');
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="id">
 
@@ -12,6 +20,7 @@
     <header id="beranda">
         <h1>SIM-Barang</h1>
         <p>Sistem Pengelolaan Inventaris Barang Jurusan</p>
+        <p>Halo <?php echo htmlspecialchars($_SESSION['username']); ?></p>
     </header>
 
     <nav>
@@ -19,6 +28,7 @@
             <li><a href="#beranda">Beranda</a></li>
             <li><a href="#inventaris">Data Barang</a></li>
             <li><a href="#form-barang">Tambah Barang</a></li>
+            <li><a href="Logout.php">Logout</a></li>
         </ul>
     </nav>
 
