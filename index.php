@@ -5,6 +5,16 @@ if (!isset($_SESSION['login'])) {
     header ('Location: login.php');
     exit;
 }
+
+require 'koneksi.php';
+$stmt = $pdo->query(
+    "SELECT b.*, k.nama_kategori
+    FROM barang b
+    JOIN kategori k ON b.id_kategori = k.id_kategori
+    ORDER BY b.id_barang"
+);
+$daftarBarang = $stmt->fetchAll();
+$daftarKategori = $pdo->query("SELECT * FROM kategori ORDER BY nama_kategori")->fetchAll();
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -44,45 +54,21 @@ if (!isset($_SESSION['login'])) {
                             <th>Nama Barang</th>
                             <th>Kategori</th>
                             <th>Jumlah</th>
+                            <th>Harga Satuan</th>
                             <th>Kondisi</th>
                         </tr>
                     </thead>
                     <tbody id="isi-tabel">
-                        <tr>
-                            <td>BRG-001</td>
-                            <td>Proyektor</td>
-                            <td>Elektronik</td>
-                            <td>5</td>
-                            <td>Baik</td>
-                        </tr>
-                        <tr>
-                            <td>BRG-002</td>
-                            <td>Komputer</td>
-                            <td>Elektronik</td>
-                            <td>30</td>
-                            <td>Baik</td>
-                        </tr>
-                        <tr>
-                            <td>BRG-003</td>
-                            <td>Kursi Lab</td>
-                            <td>Perabot</td>
-                            <td>40</td>
-                            <td>Rusak Ringan</td>
-                        </tr>
-                        <tr>
-                            <td>BRG-004</td>
-                            <td>Meja Dosen</td>
-                            <td>Perabot</td>
-                            <td>6</td>
-                            <td>Baik</td>
-                        </tr>
-                        <tr>
-                            <td>BRG-005</td>
-                            <td>Switch Jaringan</td>
-                            <td>Elektronik</td>
-                            <td>4</td>
-                            <td>Rusak Berat</td>
-                        </tr>
+                         <?php foreach ($daftarBarang as $b): ?>
+                            <tr>
+                                <td><?php echo htmlspecialchars($b['kode']); ?></td>
+                                <td><?php echo htmlspecialchars($b['nama']); ?></td>
+                                <td><?php echo htmlspecialchars($b['nama_kategori']); ?></td>
+                                <td><?php echo $b['jumlah']; ?></td>
+                                <td>Rp <?php echo number_format($b['harga'], 0, ',', '.'); ?></td>
+                                <td><?php echo htmlspecialchars($b['kondisi']); ?></td>
+                            </tr>
+                            <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
@@ -102,11 +88,13 @@ if (!isset($_SESSION['login'])) {
                 </div>
                 <div>
                     <label for="kategori">Kategori</label>
-                    <select id="kategori" name="kategori" required>
+                    <select id="kategori" name="id_kategori" required>
                         <option value="">-- Pilih Kategori --</option>
-                        <option value="Elektronik">Elektronik</option>
-                        <option value="Perabot">Perabot</option>
-                        <option value="Alat Tulis">Alat Tulis</option>
+                        <?php foreach ($daftarKategori as $k): ?>
+                            <option value="<?php echo $k['id_kategori']; ?>">
+                                <?php echo htmlspecialchars($k['nama_kategori']); ?>
+                            </option>
+                        <?php endforeach; ?>
                     </select>
                 </div>
                 <div>
