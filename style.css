@@ -175,3 +175,11 @@ button:hover {
 #toast.show {
     opacity: 1;
 }
+
+main.satu-kolom {
+    grid-template-columns: 1fr;
+}
+
+section p {
+    margin-top: 16px;
+}

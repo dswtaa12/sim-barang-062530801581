@@ -37,8 +37,6 @@ function tambahBaris(kode, nama, kategori, jumlah, kondisi) {
 
 // ===== Validasi formulir saat submit =====
 form.addEventListener('submit', function (e) {
-    e.preventDefault();
-
     let valid = true;
 
     // 1. Validasi kode: harus "BRG-" diikuti angka
@@ -60,16 +58,8 @@ form.addEventListener('submit', function (e) {
     }
 
     // 3. Kalau semua benar
-    if (valid) {
-        tambahBaris(
-            kode,
-            inputNama.value.trim(),
-            selectKategori.value,
-            jumlah,
-            selectKondisi.value
-        );
-        // tampilkan toast
-        tampilkanToast('Barang ' + kode + 'berhasil ditambahkan!');
+    if (!valid) {
+        e.preventDefault();
     }
 });
 
